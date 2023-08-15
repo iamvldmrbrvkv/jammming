@@ -35,11 +35,15 @@ function App() {
     SetPlaylist(prev => [track, ...prev]);
   }
 
+  const removeFromPlaylist = track => {
+    SetPlaylist(prev => prev.filter(t => t.id !== track.id));
+  }
+
   return (
     <div className={styles.App}>
       <SearchBar />
       <Tracklist data={data} addToPlaylist={addToPlaylist} />
-      <Playlist playlistName={playlistName} playlist={playlist} />
+      <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} />
     </div>
   );
 }

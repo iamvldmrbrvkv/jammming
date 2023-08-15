@@ -1,6 +1,6 @@
 import styles from './Playlist.module.css';
 
-function Playlist({ playlistName, playlist }) {
+function Playlist({ playlistName, playlist, removeFromPlaylist }) {
   return (
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
@@ -11,12 +11,15 @@ function Playlist({ playlistName, playlist }) {
           type='text'
           name='playlist'
           value={playlistName}
-          placeholder='Enter A Playlist Ttitle'
+          placeholder='Enter A Playlist Title'
         />
         <ul>
           {playlist.map(track => 
           <li key={track.id}>
             {track.name}-{track.artist}-{track.album}
+            <button onClick={() => removeFromPlaylist(track)}>
+              &#8722;
+            </button>
           </li>
           )}
         </ul>
