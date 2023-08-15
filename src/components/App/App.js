@@ -25,12 +25,33 @@ function App() {
       id: '3'
     }
   ]);
-  
+  const [playlistName, setPlaylistName] = useState('Playlist');
+  const [playlist, SetPlaylist] = useState([
+    {
+      name: 'name 1',
+      artist: 'artist 1',
+      album: 'album 1',
+      id: '1'
+    },
+    {
+      name: 'name 2',
+      artist: 'artist 2',
+      album: 'album 2',
+      id: '2'
+    },
+    {
+      name: 'name 3',
+      artist: 'artist 3',
+      album: 'album 3',
+      id: '3'
+    }
+  ]);
+
   return (
     <div className={styles.App}>
       <SearchBar />
       <Tracklist data={data} />
-      <Playlist />
+      <Playlist playlistName={playlistName} playlist={playlist} />
     </div>
   );
 }
