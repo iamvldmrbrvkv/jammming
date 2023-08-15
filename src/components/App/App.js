@@ -25,7 +25,7 @@ function App() {
       id: '3'
     }
   ]);
-  const [playlistName, setPlaylistName] = useState('Playlist');
+  const [playlistName, setPlaylistName] = useState('');
   const [playlist, SetPlaylist] = useState([]);
 
   const addToPlaylist = track => {
@@ -39,11 +39,13 @@ function App() {
     SetPlaylist(prev => prev.filter(t => t.id !== track.id));
   }
 
+  const handleUserInput = ({ target }) => setPlaylistName(target.value);
+
   return (
     <div className={styles.App}>
       <SearchBar />
       <Tracklist data={data} addToPlaylist={addToPlaylist} />
-      <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} />
+      <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} handleUserInput={handleUserInput} />
     </div>
   );
 }

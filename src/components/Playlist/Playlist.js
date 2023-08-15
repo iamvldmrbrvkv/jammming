@@ -1,6 +1,6 @@
 import styles from './Playlist.module.css';
 
-function Playlist({ playlistName, playlist, removeFromPlaylist }) {
+function Playlist({ playlistName, playlist, removeFromPlaylist, handleUserInput }) {
   return (
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
@@ -12,6 +12,7 @@ function Playlist({ playlistName, playlist, removeFromPlaylist }) {
           name='playlist'
           value={playlistName}
           placeholder='Enter A Playlist Title'
+          onChange={handleUserInput}
         />
         <ul>
           {playlist.map(track => 
