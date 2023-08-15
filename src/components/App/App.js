@@ -26,31 +26,19 @@ function App() {
     }
   ]);
   const [playlistName, setPlaylistName] = useState('Playlist');
-  const [playlist, SetPlaylist] = useState([
-    {
-      name: 'name 1',
-      artist: 'artist 1',
-      album: 'album 1',
-      id: '1'
-    },
-    {
-      name: 'name 2',
-      artist: 'artist 2',
-      album: 'album 2',
-      id: '2'
-    },
-    {
-      name: 'name 3',
-      artist: 'artist 3',
-      album: 'album 3',
-      id: '3'
+  const [playlist, SetPlaylist] = useState([]);
+
+  const addToPlaylist = track => {
+    if (playlist.includes(track)) {
+      return;
     }
-  ]);
+    SetPlaylist(prev => [track, ...prev]);
+  }
 
   return (
     <div className={styles.App}>
       <SearchBar />
-      <Tracklist data={data} />
+      <Tracklist data={data} addToPlaylist={addToPlaylist} />
       <Playlist playlistName={playlistName} playlist={playlist} />
     </div>
   );
