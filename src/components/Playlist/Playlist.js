@@ -1,10 +1,10 @@
 import styles from './Playlist.module.css';
 
-function Playlist({ playlistName, playlist, removeFromPlaylist, handleUserInput }) {
+function Playlist({ playlistName, playlist, removeFromPlaylist, handleUserInput, handleSubmit }) {
   return (
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='playlist'></label>
         <input
           id='playlist'
