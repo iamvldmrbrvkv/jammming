@@ -5,7 +5,7 @@ function SearchResults() {
     <div className={styles.SearchResults}>
       
     </div>
-  )
+  );
 }
 
 export default SearchResults;

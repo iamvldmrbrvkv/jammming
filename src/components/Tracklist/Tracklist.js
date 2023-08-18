@@ -11,7 +11,7 @@ function Tracklist({ data, addToPlaylist }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Tracklist;

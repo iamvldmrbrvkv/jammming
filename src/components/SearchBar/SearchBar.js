@@ -5,7 +5,7 @@ function SearchBar() {
     <div className={styles.SearchBar}>
       
     </div>
-  )
+  );
 }
 
 export default SearchBar;

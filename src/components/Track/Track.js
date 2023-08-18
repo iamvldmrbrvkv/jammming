@@ -10,7 +10,7 @@ function Track({ track, addToPlaylist }) {
         </button>
       </li>
     </div>
-  )
+  );
 }
 
 export default Track;

@@ -1,18 +1,16 @@
 import styles from './Playlist.module.css';
 
-function Playlist({ playlistName, playlist, removeFromPlaylist, handleUserInput, handleSubmit }) {
+function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistInput, handlePlaylistSubmit }) {
   return (
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='playlist'></label>
-        <input
+      <input
           id='playlist'
           type='text'
           name='playlist'
           value={playlistName}
           placeholder='Enter A Playlist Title'
-          onChange={handleUserInput}
+          onChange={handlePlaylistInput}
         />
         <ul>
           {playlist.map(track => 
@@ -24,10 +22,11 @@ function Playlist({ playlistName, playlist, removeFromPlaylist, handleUserInput,
           </li>
           )}
         </ul>
-        <button type='submit'>SAVE TO SPOTIFY</button>
-      </form>
+        <button onClick={handlePlaylistSubmit}>
+          Save To Spotify
+        </button>
     </div>
-  )
+  );
 }
 
 export default Playlist;
