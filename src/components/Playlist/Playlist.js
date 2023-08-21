@@ -15,7 +15,7 @@ function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistIn
         <ul>
           {playlist.map(track => 
           <li key={track.id}>
-            {track.name}-{track.artist}-{track.album}
+            {track.name} | {track.artists} | {track.album}
             <button onClick={() => removeFromPlaylist(track)}>
               &#8722;
             </button>
