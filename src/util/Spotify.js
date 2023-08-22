@@ -1,5 +1,5 @@
 const client_id = 'c1387cb2da0a45b4b1f522a4142834f6';
-const scope = 'user-read-private user-read-email';
+const scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public';
 const redirect_uri = 'http://localhost:3000/';
 
 const auth = () => {
@@ -27,8 +27,8 @@ const auth = () => {
 
     const urlToSpotify = urlToSend();
     window.location.replace(urlToSpotify);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 

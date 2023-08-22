@@ -28,7 +28,7 @@ function App() {
     if (playlistName.length < 1) {
       alert('Please enter a playlist title');
     } else {
-      playlist.map(track => track.uri);
+      savePlaylist();
       SetPlaylist([]);
     }
   };
@@ -52,7 +52,7 @@ function App() {
     const getError = getAccessError();
     if (getError) {
       alert('Login failed, access denied by user!');
-    };
+    }
     const getToken = getAccessToken();
     if (getToken) {
       setToken(getToken);
@@ -77,7 +77,7 @@ function App() {
       try {
         const response = await fetch(urlToFetch, {
           headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': `Bearer ${token}`
           }
         })
         if (response.ok) {
@@ -94,10 +94,90 @@ function App() {
           })
           setData(tracks);
         }
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
+  };
+
+  const fetchProfile = async () => {
+    const profileEndpoint = '/v1/me';
+    const urlToFetch = `${spotifyBaseUrl}${profileEndpoint}`;
+    try {
+      const response = await fetch(urlToFetch, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      if (response.ok) {
+        const jsonResponse = await response.json();
+        const user_id = jsonResponse.id;
+        return user_id;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createPlaylist = async (userId) => {
+    const user_id = userId;
+    const playlistEndPoint = `/v1/users/${user_id}/playlists`;
+    const urlToFetch = `${spotifyBaseUrl}${playlistEndPoint}`;
+    const data = JSON.stringify({
+      'name': `${playlistName}`,
+      'description': 'A playlist created by the Jammming app.',
+      'public': true
+    })
+    try {
+      const response = await fetch(urlToFetch, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.ok) {
+        const jsonResponse = await response.json();
+        const playlist_id = jsonResponse.id;
+        return playlist_id;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addTracksToPlaylist = async (playlistId) => {
+    const playlist_id = playlistId;
+    const addTracksEndpoint = `/v1/playlists/${playlist_id}/tracks`;
+    const urlToFetch = `${spotifyBaseUrl}${addTracksEndpoint}`;
+    const data = JSON.stringify({
+      'uris': playlist.map(track => track.uri),
+      'position': 0
+    })
+    try {
+      const response = await fetch(urlToFetch, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.ok) {
+        const jsonResponse = await response.json();
+        const snapshot_id = jsonResponse.snapshot_id;
+        return snapshot_id;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const savePlaylist = async () => {
+    const user_id = await fetchProfile();
+    const playlist_id = await createPlaylist(user_id);
+    await addTracksToPlaylist(playlist_id);
   };
 
   return (
