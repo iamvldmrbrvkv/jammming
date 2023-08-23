@@ -15,9 +15,13 @@ function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistIn
         <ul>
           {playlist.map(track => 
           <li key={track.id}>
+            <img
+              src={track.images[2].url}
+              alt='artwork'
+            />
             {track.name} | {track.artists} | {track.album}
             <button onClick={() => removeFromPlaylist(track)}>
-              &#8722;
+              -
             </button>
           </li>
           )}

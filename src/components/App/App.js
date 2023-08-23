@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
-import styles from './App.module.css';
 import { auth, getAccessToken, getAccessError } from '../../util/Spotify';
+import styles from './App.module.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -89,7 +89,8 @@ function App() {
               name: item.name,
               artists: item.artists.map(artist => artist.name).join(', '),
               album: item.album.name,
-              uri: item.uri
+              uri: item.uri,
+              images: item.album.images
             }
           })
           setData(tracks);
@@ -182,7 +183,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      {!token && <p>To access this app, please login with Spotify.</p>}
+      {!token && <p>To access this app, please login with <a href='https://open.spotify.com/' target='_blank' rel='noreferrer'>Spotify.</a></p>}
       {!token && <button onClick={handleLogIn}>
         Log in with Spotify
       </button>}
