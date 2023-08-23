@@ -31,7 +31,11 @@ In this project, you will build a React web application called Jammming. You wil
 
 ## Running the app locally
 In the project directory run:
+
 `npm install`
+
 Installs all modules that are listed on package.json file and their dependencies.
+
 `npm start`
+
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes. You may also see any lint errors in the console.
