@@ -1,0 +1,63 @@
+.Track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  border-radius: 11px;
+  padding: 2%;
+}
+
+.Track:hover {
+  background-color: #2a2a2a;
+}
+
+.TrackAddButton {
+  color: #ffffff;
+  background-color: inherit;
+  border: none;
+  font-size: 23px;
+}
+
+.TrackAddButton:hover {
+  color: #00e357;
+  cursor: pointer;
+}
+
+.TrackInfo {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 64px;
+  width: 100%;
+  margin-left: 1%;
+}
+
+.TrackInfo h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.TrackInfo p {
+  font-size: 13px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .TrackInfo h3 {
+    font-size: 13px;
+  }
+  
+  .TrackInfo p {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .TrackInfo h3 {
+    font-size: 12px;
+  }
+  
+  .TrackInfo p {
+    font-size: 9px;
+  }
+}

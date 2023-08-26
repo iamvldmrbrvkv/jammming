@@ -3,9 +3,11 @@ import styles from './SearchBar.module.css';
 function SearchBar({ searchInput, handleSeachInput, handleSearchSubmit }) {
   return (
     <div className={styles.SearchBar}>
-      <h1>
-        Jammming
-      </h1>
+      <div className={styles.SearchBarHeader}>
+        <h1>
+          Jammming
+        </h1>
+      </div>
       <input
         id='search-bar'
         type='text'
@@ -13,8 +15,9 @@ function SearchBar({ searchInput, handleSeachInput, handleSearchSubmit }) {
         value={searchInput}
         placeholder='Enter A Song Title'
         onChange={handleSeachInput}
+        className={styles.SearchBarInput}
       />
-      <button onClick={handleSearchSubmit}>
+      <button onClick={handleSearchSubmit} className={styles.SearchBarButton}>
         Search
       </button>
     </div>

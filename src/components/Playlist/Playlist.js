@@ -5,28 +5,30 @@ function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistIn
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
       <input
-          id='playlist'
-          type='text'
-          name='playlist'
-          value={playlistName}
-          placeholder='Enter A Playlist Title'
-          onChange={handlePlaylistInput}
-        />
-        <ul>
-          {playlist.map(track => 
-          <li key={track.id}>
-            <img
-              src={track.images[2].url}
-              alt='artwork'
-            />
-            {track.name} | {track.artists} | {track.album}
-            <button onClick={() => removeFromPlaylist(track)}>
-              -
-            </button>
-          </li>
-          )}
-        </ul>
-        <button onClick={handlePlaylistSubmit}>
+        id='playlist'
+        type='text'
+        name='playlist'
+        value={playlistName}
+        placeholder='Enter A Playlist Name'
+        onChange={handlePlaylistInput}
+        className={styles.PlaylistInput}
+      />
+      {playlist.map(track => (
+        <div key={track.id} className={styles.Track}>
+          <img
+            src={track.images[2].url}
+            alt='Artwork'
+          />
+          <div className={styles.TrackInfo}>
+            <h3>{track.name}</h3>
+            <p>{track.artists} • {track.album}</p>
+          </div>
+          <button onClick={() => removeFromPlaylist(track)} className={styles.TrackRemoveButton}>
+            -
+          </button>
+        </div>
+      ))}
+        <button onClick={handlePlaylistSubmit} className={styles.PlaylistButton}>
           Save To Spotify
         </button>
     </div>

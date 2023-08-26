@@ -1,0 +1,109 @@
+.Playlist {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 45%;
+  min-height: 350px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #121212;
+  border-radius: 11px;
+}
+
+.PlaylistInput {
+  text-align: center;
+  color: #ffffff;
+  background-color: #242424;
+  border: 2px solid #ffffff;
+  border-radius: 35px;
+  padding: 11px 35px;
+  margin-bottom: 4%;
+}
+
+.PlaylistButton {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  padding: 11px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.PlaylistButton:hover {
+  background-color: #00e357;
+  cursor: pointer;
+}
+
+.Track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  border-radius: 11px;
+  padding: 2%;
+}
+
+.TrackInfo {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 64px;
+  width: 100%;
+  margin-left: 1%;
+}
+
+.TrackInfo h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.TrackInfo p {
+  font-size: 13px;
+  margin: 0;
+}
+
+.Track:hover {
+  background-color: #2a2a2a;
+}
+
+.TrackRemoveButton {
+  color: #ffffff;
+  background-color: inherit;
+  border: none;
+  font-size: 23px;
+}
+
+.TrackRemoveButton:hover {
+  color: #00e357;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px) {
+  .Playlist {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .TrackInfo h3 {
+    font-size: 13px;
+  }
+  
+  .TrackInfo p {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .TrackInfo h3 {
+    font-size: 12px;
+  }
+  
+  .TrackInfo p {
+    font-size: 9px;
+  }
+}

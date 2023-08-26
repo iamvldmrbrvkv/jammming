@@ -26,7 +26,7 @@ function App() {
 
   const handlePlaylistSubmit = () => {
     if (playlistName.length < 1) {
-      alert('Please enter a playlist title');
+      alert('Please enter a playlist name');
     } else {
       savePlaylist();
       SetPlaylist([]);
@@ -183,13 +183,18 @@ function App() {
 
   return (
     <div className={styles.App}>
-      {!token && <p>To access this app, please login with <a href='https://open.spotify.com/' target='_blank' rel='noreferrer'>Spotify.</a></p>}
-      {!token && <button onClick={handleLogIn}>
+      {!token && <p className={styles.AppText}>To access this app, please login with <a href='https://open.spotify.com/' target='_blank' rel='noreferrer'>Spotify.</a></p>}
+      {!token && <button onClick={handleLogIn} className={styles.AppButton}>
         Log in with Spotify
       </button>}
       {token && <SearchBar searchInput={searchInput} handleSeachInput={handleSeachInput} handleSearchSubmit={handleSearchSubmit} />}
-      {token && <SearchResults data={data} addToPlaylist={addToPlaylist} />}
-      {token && <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} handlePlaylistInput={handlePlaylistInput} handlePlaylistSubmit={handlePlaylistSubmit} />}
+      {token && <div className={styles.SearchResultsAndPlaylist}>
+        <SearchResults data={data} addToPlaylist={addToPlaylist} />
+        <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} handlePlaylistInput={handlePlaylistInput} handlePlaylistSubmit={handlePlaylistSubmit} />
+      </div>}
+      {token && <div className={styles.Footer}>
+        <p>From Russia with <span>♥</span></p>
+      </div>}
     </div>
   );
 }

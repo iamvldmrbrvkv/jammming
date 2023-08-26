@@ -2,16 +2,19 @@ import styles from './Track.module.css';
 
 function Track({ track, addToPlaylist }) {
   return (
-    <li className={styles.Track}>
+    <div className={styles.Track}>
       <img
         src={track.images[2].url}
         alt='artwork'
       />
-      {track.name} | {track.artists} | {track.album}
-      <button onClick={() => addToPlaylist(track)}>
+      <div className={styles.TrackInfo}>
+        <h3>{track.name}</h3>
+        <p>{track.artists} • {track.album}</p>
+      </div>
+      <button onClick={() => addToPlaylist(track)} className={styles.TrackAddButton}>
         +
       </button>
-    </li>
+    </div>
   );
 }
 

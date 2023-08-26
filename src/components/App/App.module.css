@@ -1,38 +1,60 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-family: sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.AppText {
+  padding-top: 11%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.AppButton {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  padding: 11px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1%;
+}
+
+.AppButton:hover {
+  background-color: #00e357;
+  cursor: pointer;
+}
+
+.App a {
+  color:#00e357;
+  text-decoration-color: #ffffff;
+}
+
+.App a:visited {
+  color: #ffffff;
+  text-decoration-color: #00e357;
+}
+
+.SearchResultsAndPlaylist {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 90%;
+  margin-bottom: 1%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .SearchResultsAndPlaylist {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+.Footer {
+  text-align: center;
+  margin-bottom: 2%;
 }
