@@ -60,8 +60,8 @@ function App() {
         alert('Your session has expired, please login!');
         setToken('');
       }, 1000*60*60);
-    };
-    return () => window.history.replaceState({}, 'Jammming', 'jammming/');
+    }
+    return () => window.history.replaceState({}, '');
   }, [token]);
 
   useEffect(() => {
