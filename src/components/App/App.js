@@ -72,7 +72,7 @@ function App() {
         setToken('');
       }, 1000*60*60);
     };
-    return () => window.history.replaceState({}, 'Jammming', '/');
+    return () => window.history.replaceState({}, 'Jammming', 'https://iamvldmrbrvkv.github.io/jammming/');
   }, []);
 
   const spotifyBaseUrl = 'https://api.spotify.com';
