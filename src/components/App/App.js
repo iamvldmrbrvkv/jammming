@@ -61,7 +61,7 @@ function App() {
         setToken('');
       }, 1000*60*60);
     }
-    return () => window.history.replaceState({}, '', '');
+    return () => window.history.replaceState({}, '', 'https://iamvldmrbrvkv.github.io/jammming/');
   }, [token]);
 
   useEffect(() => {
