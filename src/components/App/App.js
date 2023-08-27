@@ -46,18 +46,7 @@ function App() {
       getTracks();
     }
   };
-
-  useEffect(() => {
-    const keyDownHandler = e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleSearchSubmit();
-      }
-    }
-    document.addEventListener('keydown', keyDownHandler);
-    return () => document.removeEventListener('keydown', keyDownHandler);
-  });
-
+  
   const [token, setToken] = useState('');
   useEffect(() => {
     const getError = getAccessError();
@@ -72,8 +61,21 @@ function App() {
         setToken('');
       }, 1000*60*60);
     };
-    return () => window.history.replaceState({}, 'Jammming', 'https://iamvldmrbrvkv.github.io/jammming/');
+    return () => window.history.replaceState({}, 'Jammming', 'jammming');
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      const keyDownHandler = e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSearchSubmit();
+        }
+      }
+      document.addEventListener('keydown', keyDownHandler);
+      return () => document.removeEventListener('keydown', keyDownHandler);
+    }
+  });
 
   const spotifyBaseUrl = 'https://api.spotify.com';
   const queryParams = `q=${searchInput}&type=track`;
