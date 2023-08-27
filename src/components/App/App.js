@@ -47,6 +47,17 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const keyDownHandler = e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSearchSubmit();
+      }
+    }
+    document.addEventListener('keydown', keyDownHandler);
+    return () => document.removeEventListener('keydown', keyDownHandler);
+  });
+
   const [token, setToken] = useState('');
   useEffect(() => {
     const getError = getAccessError();
@@ -61,9 +72,7 @@ function App() {
         setToken('');
       }, 1000*60*60);
     };
-    return () => {
-      window.history.replaceState({}, 'Jammming', '/');
-    }
+    return () => window.history.replaceState({}, 'Jammming', '/');
   }, []);
 
   const spotifyBaseUrl = 'https://api.spotify.com';
