@@ -61,10 +61,8 @@ function App() {
         setToken('');
       }, 1000*60*60);
     };
-    return () => {
-      window.history.replaceState({}, 'Jammming', '/');
-    }
-  }, []);
+    return () => window.history.replaceState({}, 'Jammming', '/');
+  }, [token]);
 
   useEffect(() => {
     if (token) {
@@ -75,9 +73,7 @@ function App() {
         }
       }
       document.addEventListener('keydown', keyDownHandler);
-      return () => {
-        document.removeEventListener('keydown', keyDownHandler);
-      }
+      return () => document.removeEventListener('keydown', keyDownHandler);
     }
   });
 
