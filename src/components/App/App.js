@@ -11,36 +11,6 @@ function App() {
   const [playlist, SetPlaylist] = useState([]);
   const [searchInput, SetSearchInput] = useState('');
 
-  const [token, setToken] = useState('');
-  useEffect(() => {
-    const getError = getAccessError();
-    if (getError) {
-      alert('Login failed, access denied by user!');
-    }
-    const getToken = getAccessToken();
-    if (getToken) {
-      setToken(getToken);
-      setTimeout(() => {
-        alert('Your session has expired, please login!');
-        setToken('');
-      }, 1000*60*60);
-    };
-    return () => window.history.replaceState({}, 'Jammming', '/jammming');
-  }, []);
-
-  useEffect(() => {
-    if (token) {
-      const keyDownHandler = e => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          handleSearchSubmit();
-        }
-      }
-      document.addEventListener('keydown', keyDownHandler);
-      return () => document.removeEventListener('keydown', keyDownHandler);
-    }
-  });
-
   const addToPlaylist = track => {
     if (playlist.includes(track)) {
       return;
@@ -77,6 +47,40 @@ function App() {
     }
   };
   
+  const [token, setToken] = useState('');
+  useEffect(() => {
+    const getError = getAccessError();
+    if (getError) {
+      alert('Login failed, access denied by user!');
+    }
+    const getToken = getAccessToken();
+    if (getToken) {
+      setToken(getToken);
+      setTimeout(() => {
+        alert('Your session has expired, please login!');
+        setToken('');
+      }, 1000*60*60);
+    };
+    return () => {
+      window.history.replaceState({}, 'Jammming', '/');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      const keyDownHandler = e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSearchSubmit();
+        }
+      }
+      document.addEventListener('keydown', keyDownHandler);
+      return () => {
+        document.removeEventListener('keydown', keyDownHandler);
+      }
+    }
+  });
+
   const spotifyBaseUrl = 'https://api.spotify.com';
   const queryParams = `q=${searchInput}&type=track`;
 
