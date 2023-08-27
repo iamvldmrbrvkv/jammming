@@ -25,7 +25,7 @@ function App() {
         setToken('');
       }, 1000*60*60);
     };
-    return () => window.history.replaceState({}, 'Jammming', '/');
+    return () => window.history.replaceState({}, 'Jammming', 'jammming');
   }, []);
 
   useEffect(() => {
