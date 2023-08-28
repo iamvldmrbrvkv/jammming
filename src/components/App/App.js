@@ -199,7 +199,7 @@ function App() {
     <div className={styles.App}>
       {!token && <p className={styles.AppText}>To access this app, please login with <a href='https://open.spotify.com/' target='_blank' rel='noreferrer'>Spotify.</a></p>}
       {!token && <button onClick={handleLogIn} className={styles.AppButton}>
-        Log in with Spotify
+        Log In With Spotify
       </button>}
       {token && <SearchBar searchInput={searchInput} handleSeachInput={handleSeachInput} handleSearchSubmit={handleSearchSubmit} />}
       {token && <div className={styles.SearchResultsAndPlaylist}>
