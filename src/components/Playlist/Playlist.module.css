@@ -82,6 +82,16 @@
   cursor: pointer;
 }
 
+.SuccessMessage {
+  text-align: center;
+  color: #121212;
+  background-color: #00e357;
+  border-radius: 11px;
+  width: 90%;
+  padding: 2%;
+  margin: 0;
+}
+
 @media only screen and (max-width: 1024px) {
   .Playlist {
     width: 90%;

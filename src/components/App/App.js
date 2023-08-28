@@ -8,18 +8,20 @@ import styles from './App.module.css';
 function App() {
   const [data, setData] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
-  const [playlist, SetPlaylist] = useState([]);
-  const [searchInput, SetSearchInput] = useState('');
+  const [playlist, setPlaylist] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [success, setSuccess] = useState('');
 
   const addToPlaylist = track => {
     if (playlist.includes(track)) {
       return;
     }
-    SetPlaylist(prev => [track, ...prev]);
+    setPlaylist(prev => [track, ...prev]);
+    setSuccess('');
   };
 
   const removeFromPlaylist = track => {
-    SetPlaylist(prev => prev.filter(t => t.id !== track.id));
+    setPlaylist(prev => prev.filter(t => t.id !== track.id));
   };
 
   const handlePlaylistInput = ({ target }) => setPlaylistName(target.value);
@@ -28,8 +30,9 @@ function App() {
     if (playlistName.length < 1) {
       alert('Please enter a playlist name');
     } else {
-      savePlaylist();
-      SetPlaylist([]);
+      const snapshot_id = savePlaylist();
+      setSuccess(snapshot_id);
+      setPlaylist([]);
     }
   };
 
@@ -37,7 +40,7 @@ function App() {
     auth();
   };
 
-  const handleSeachInput = ({ target }) => SetSearchInput(target.value);
+  const handleSeachInput = ({ target }) => setSearchInput(target.value);
 
   const handleSearchSubmit = () => {
     if (searchInput.length < 1) {
@@ -201,7 +204,7 @@ function App() {
       {token && <SearchBar searchInput={searchInput} handleSeachInput={handleSeachInput} handleSearchSubmit={handleSearchSubmit} />}
       {token && <div className={styles.SearchResultsAndPlaylist}>
         <SearchResults data={data} addToPlaylist={addToPlaylist} />
-        <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} handlePlaylistInput={handlePlaylistInput} handlePlaylistSubmit={handlePlaylistSubmit} />
+        <Playlist playlistName={playlistName} playlist={playlist} removeFromPlaylist={removeFromPlaylist} handlePlaylistInput={handlePlaylistInput} handlePlaylistSubmit={handlePlaylistSubmit} success={success} />
       </div>}
       {token && <div className={styles.Footer}>
         <p>From Russia with <span>♥</span></p>

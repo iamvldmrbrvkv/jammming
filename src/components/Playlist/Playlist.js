@@ -1,6 +1,6 @@
 import styles from './Playlist.module.css';
 
-function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistInput, handlePlaylistSubmit }) {
+function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistInput, handlePlaylistSubmit, success }) {
   return (
     <div className={styles.Playlist}>
       <h2>Playlist</h2>
@@ -28,9 +28,10 @@ function Playlist({ playlistName, playlist, removeFromPlaylist, handlePlaylistIn
           </button>
         </div>
       ))}
-        <button onClick={handlePlaylistSubmit} className={styles.PlaylistButton}>
-          Save To Spotify
-        </button>
+      {success && <p className={styles.SuccessMessage}>The playlist has been successfully saved to your Spotify account. Thank you for using this app!</p>}
+      <button onClick={handlePlaylistSubmit} className={styles.PlaylistButton}>
+        Save To Spotify
+      </button>
     </div>
   );
 }
