@@ -64,7 +64,7 @@ function App() {
         setToken('');
       }, 1000*60*60);
     }
-    return () => window.history.replaceState({}, '', 'https://iamvldmrbrvkv.github.io/jammming/');
+    return () => window.history.replaceState({}, '', 'https://jammming-app-by-vladimir-borovikov.netlify.app/');
   }, [token]);
 
   useEffect(() => {

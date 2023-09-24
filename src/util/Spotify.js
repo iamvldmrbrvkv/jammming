@@ -1,6 +1,6 @@
 const client_id = 'c1387cb2da0a45b4b1f522a4142834f6';
 const scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public';
-const redirect_uri = 'https://iamvldmrbrvkv.github.io/jammming/';
+const redirect_uri = 'https://jammming-app-by-vladimir-borovikov.netlify.app/';
 
 const auth = () => {
   try {
