@@ -167,8 +167,8 @@ function App() {
     const addTracksEndpoint = `/v1/playlists/${playlist_id}/tracks`;
     const urlToFetch = `${spotifyBaseUrl}${addTracksEndpoint}`;
     const data = JSON.stringify({
-      'uris': playlist.map(track => track.uri),
-      'position': 0
+      uris: playlist.map(track => track.uri),
+      position: 0
     })
     try {
       const response = await fetch(urlToFetch, {
