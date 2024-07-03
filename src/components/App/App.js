@@ -139,9 +139,9 @@ function App() {
     const playlistEndPoint = `/v1/users/${user_id}/playlists`;
     const urlToFetch = `${spotifyBaseUrl}${playlistEndPoint}`;
     const data = JSON.stringify({
-      'name': `${playlistName}`,
-      'description': 'The playlist created by the Jammming app.',
-      'public': true
+      name: `${playlistName}`,
+      description: 'The playlist created by the Jammming app.',
+      public: true
     })
     try {
       const response = await fetch(urlToFetch, {
